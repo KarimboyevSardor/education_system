@@ -1,0 +1,1 @@
+PGPASSWORD=6F4G6NCYU6FVsCaQ2UaDugfo62Wt8tk9 psql -h dpg-d1ua2ps9c44c73cp4s70-a.oregon-postgres.render.com -U education_db_cecu_user education_db_cecu
