@@ -3,7 +3,14 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const sequelize = require('./config/db.js').sequelize;
-
+sequelize.authenticate()
+  .then(() => {
+    console.log('✅ Render PostgreSQL bazasiga muvaffaqiyatli ulandik!');
+  })
+  .catch(err => {
+    console.error('❌ Ulanishda xatolik:', err);
+  });
+  
 // Middleware
 app.use(cors({
   origin: 'http://localhost:3000',
