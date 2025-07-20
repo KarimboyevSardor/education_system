@@ -1,7 +1,6 @@
-require('dotenv').config();
-const { Sequelize, DataTypes } = require('sequelize');
+require("dotenv").config();
+const { Sequelize } = require("sequelize");
 
-// Render PostgreSQL uchun env-dan ma'lumotlarni olish
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
@@ -9,23 +8,14 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: 'postgres',
+    dialect: "postgres", // ❗️Bu yerda dialect ni aniq ko‘rsatish shart!
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized: false, // Render-da SSL kerak bo'lishi mumkin
+        rejectUnauthorized: false // Agar render SSL bilan ishlayotgan bo‘lsa
       }
     }
   }
 );
 
-const db = {};
-
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
-
-// Modellarni ulash
-db.User = require('../models/user')(sequelize, DataTypes);
-// Boshqa modellaringiz bo‘lsa shu yerga qo‘shing
-
-module.exports = db;
+module.exports = sequelize;

@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const config = require("../config/config.json").development;
+const config = require("../config/config.js").development;
 
 // Sequelize orqali databasega ulanish
 const sequelize = new Sequelize(
@@ -8,8 +8,10 @@ const sequelize = new Sequelize(
   config.password,
   {
     host: config.host,
+    port: config.port,
     dialect: config.dialect,
-    logging: false,
+    dialectOptions: config.dialectOptions,
+    logging: config.logging
   }
 );
 

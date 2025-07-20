@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const sequelize = require('./config/db.js').sequelize;
+const sequelize = require('./config/db');
 sequelize.authenticate()
   .then(() => {
     console.log('✅ Render PostgreSQL bazasiga muvaffaqiyatli ulandik!');
