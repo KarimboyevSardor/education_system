@@ -1,7 +1,6 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const config = require("../config/config.js").development;
 
-// Sequelize orqali databasega ulanish
 const sequelize = new Sequelize(
   config.database,
   config.username,
@@ -15,10 +14,10 @@ const sequelize = new Sequelize(
   }
 );
 
-// Modelni yuklash
+// Modellarni ulash
 const User = require("./user")(sequelize, DataTypes);
 
-// Jadvallarni yaratish
+// Bazani sinxronlashtirish
 sequelize.sync({ force: false })
   .then(() => {
     console.log("✅ Jadvallar muvaffaqiyatli yaratildi!");
@@ -27,7 +26,6 @@ sequelize.sync({ force: false })
     console.error("❌ Sequelize sync xatolik:", err);
   });
 
-// Eksport qilish
 module.exports = {
   sequelize,
   Sequelize,
